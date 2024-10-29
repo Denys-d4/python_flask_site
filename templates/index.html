@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Hub</h1>
-    <a href="{{ url_for('registration') }}">Register</a> | 
-    <a href="{{ url_for('login') }}">Login</a> | 
-    <a href="{{ url_for('chat') }}">Chat Room</a>
+    <!-- Header with navigation links -->
+    <header>
+        <nav>
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('registration') }}">Register</a> |
+            <a href="{{ url_for('profile') }}">Profile</a> |
+            <a href="{{ url_for('chat') }}">Chat Room</a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <h1>Welcome to the Hub</h1>
+    </main>
 </body>
 </html>
+

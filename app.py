@@ -114,12 +114,22 @@ def logout():
 
 
 @app.route('/chat', methods=['GET', 'POST'])
-@token_required
+#@token_required
 def chat():
     # Load chat messages
     messages = load_json(CHAT_FILE)
 
     if request.method == 'POST':
+
+        token = request.cookies.get('token')
+        if not token:
+            return redirect(url_for('login'))
+        
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
+        except:
+            return redirect(url_for('login'))
+
         token = request.cookies.get('token')
         data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
         user_email = data['user']
